@@ -70,10 +70,35 @@ const ICONS = {
     <line x1="26.5" y1="26.5" x2="29.5" y2="29.5" stroke="#94A3B8" stroke-width="1.2" stroke-linecap="round"/>
     <line x1="29.5" y1="26.5" x2="26.5" y2="29.5" stroke="#94A3B8" stroke-width="1.2" stroke-linecap="round"/>
   </svg>`,
+  dolce: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="40" height="40" rx="10" fill="#1E293B"/>
+    <path d="M12 13C12 11.3431 13.3431 10 15 10H25C26.6569 10 28 11.3431 28 13V27C28 28.6569 26.6569 30 25 30H15C13.3431 30 12 28.6569 12 27V13Z" stroke="#F59E0B" stroke-width="1.75"/>
+    <circle cx="20" cy="20" r="5" stroke="#38BDF8" stroke-width="1.75"/>
+    <circle cx="16" cy="15" r="1.5" fill="#EC4899"/>
+    <circle cx="24" cy="25" r="1.5" fill="#10B981"/>
+  </svg>`,
   check: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`
 };
 
 const TOOLS = [
+  {
+    name: 'Dolce Colore',
+    url: '/dolce-colore',
+    icon: ICONS.dolce,
+    span: 'card-span-12',
+    tag: '1-Click Historical Photo & Video AI Colorizer',
+    status: 'Native AI Desktop Suite',
+    domain: 'revisitedlabs.com/dolce-colore',
+    target: '_self',
+    cta: 'Explore Dolce Colore',
+    desc: 'Native desktop neural restoration suite for Windows and macOS. Re-animates monochrome family photos and historical footage with local DeOldify AI, DirectML GPU acceleration, and CIE L*a*b* micro-sharpness preservation. 100% private and offline.',
+    features: [
+      '100% offline local neural inference (DirectML GPU, Apple Silicon MPS & CPU)',
+      'CIE L*a*b* color space separation: zero lost sharpness or altered grain',
+      'Cinema Video Colorizer with 60 FPS temporal smoothing & frame interpolation',
+      'Single-file Windows .exe installer and native macOS .dmg package'
+    ],
+  },
   {
     name: 'Logisim Revisited',
     url: 'https://logisimrevisited.com',
@@ -140,8 +165,9 @@ const TOOLS = [
   },
 ];
 
-function shell({ title, description, path, active, body }) {
+function shell({ title, description, path, active, image, body }) {
   const canonical = `https://revisitedlabs.com${path === '/' ? '/' : path}`;
+  const ogImg = image || 'https://revisitedlabs.com/favicon.svg';
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -154,8 +180,8 @@ function shell({ title, description, path, active, body }) {
 <meta property="og:title" content="${title} | Revisited Labs">
 <meta property="og:description" content="${description}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:image" content="https://revisitedlabs.com/favicon.svg">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="${ogImg}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="${canonical}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/site.css">
@@ -181,6 +207,7 @@ function shell({ title, description, path, active, body }) {
   </a>
   <nav class="main-nav">
     <a href="/" ${active === 'home' ? 'class="active"' : ''}>Suite</a>
+    <a href="/dolce-colore" ${active === 'dolce' ? 'class="active"' : ''}>Dolce Colore</a>
     <a href="/about.html" ${active === 'about' ? 'class="active"' : ''}>About</a>
     <a href="/privacy.html" ${active === 'privacy' ? 'class="active"' : ''}>Privacy</a>
     <a href="https://github.com/ntropey" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -195,6 +222,7 @@ ${body}
   <div class="footer-top">
     <p><strong>Revisited Labs</strong> &middot; Open-source remasters of classic desktop software under the GPL-3.0 license.</p>
     <div class="footer-links">
+      <a href="/dolce-colore">Dolce Colore Pro</a>
       <a href="https://hodokurevisited.com">Hodoku Revisited</a>
       <a href="https://logisimrevisited.com">Logisim Revisited</a>
       <a href="https://kakurorevisited.com">Kakuro Revisited</a>
@@ -232,7 +260,7 @@ const homeHtml = shell({
 
     <div class="grid-bento">
       ${TOOLS.map(t => `
-        <a href="${t.url}" class="card-tool ${t.span}" target="_blank" rel="noopener noreferrer">
+        <a href="${t.url}" class="card-tool ${t.span}" ${t.target ? `target="${t.target}"` : 'target="_blank" rel="noopener noreferrer"'}>
           <div class="card-header-row">
             <div class="tool-icon-wrap">${t.icon}</div>
             <span class="live-pill">
@@ -248,7 +276,7 @@ const homeHtml = shell({
           </ul>
           <div class="tool-cta-row">
             <div class="tool-cta-btn">
-              Launch application <span>&rarr;</span>
+              ${t.cta || 'Launch application'} <span>&rarr;</span>
             </div>
             <span class="tool-ext-link">${t.domain}</span>
           </div>
@@ -352,10 +380,229 @@ const privacyHtml = shell({
 });
 writeFileSync(join(out, 'privacy.html'), privacyHtml);
 
-// 4. Sitemap.xml & Robots.txt
+// 4. Dolce Colore Product Page
+const dolceHtml = shell({
+  title: 'Dolce Colore - 1-Click Historical Photo & Video AI Colorizer',
+  description: '100% private, native desktop AI colorizer for Windows & macOS. Restore historical photos and vintage cinema locally with DirectML GPU acceleration.',
+  path: '/dolce-colore',
+  active: 'dolce',
+  image: 'https://revisitedlabs.com/dolce-icon.png',
+  body: `
+  <section class="hero" style="margin-bottom:3rem">
+    <div class="badge-tag badge-pro">
+      <span class="status-dot" style="background:#f59e0b;box-shadow:0 0 8px #f59e0b"></span>
+      <span>v2.0 Native Desktop Suite &middot; Windows &amp; macOS &middot; 100% Offline</span>
+    </div>
+    <h1>Breathe life into history.<br>1-Click AI Photo &amp; Video Colorizer.</h1>
+    <p class="lead">Dolce Colore restores black-and-white family portraits, historical archives, and vintage cinema with local neural networks. Zero cloud uploads, zero subscription lock-in, 100% private on your own device.</p>
+
+    <div class="btn-group">
+      <a href="#pricing" class="btn btn-primary">
+        <span>Get Dolce Colore Pro &mdash; $39 Lifetime</span> &rarr;
+      </a>
+      <a href="https://github.com/ntropey/ai-colorer/releases" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+        Download Community Edition (Free)
+      </a>
+    </div>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-top:-0.5rem">
+      One-time payment &middot; Instant offline license key &middot; 30-day money-back guarantee
+    </p>
+  </section>
+
+  <!-- Interactive Showcase Window -->
+  <div class="showcase-banner">
+    <div class="showcase-header">
+      <div class="showcase-controls">
+        <span class="window-dot dot-red"></span>
+        <span class="window-dot dot-yellow"></span>
+        <span class="window-dot dot-green"></span>
+      </div>
+      <div class="showcase-title">Dolce Colore v2.0 &mdash; Studio Edition [DirectML GPU Active]</div>
+      <div style="font-size:0.75rem;color:var(--green);font-weight:600">● OFFLINE LOCAL INFERENCE</div>
+    </div>
+    <div class="showcase-body">
+      <img src="/dolce-sample.png" alt="Dolce Colore AI Colorization Sample" class="showcase-img">
+      <div class="showcase-caption">
+        <strong>Real neural output:</strong> High-precision color synthesis using CIE L*a*b* space isolation. Original film grain, edge sharpness, and luminance depth are 100% preserved.
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Architectural Pillars -->
+  <section style="margin-bottom:5rem">
+    <h2 class="section-title">Engineered for Quality &amp; Absolute Privacy</h2>
+    <p class="section-desc">Why historians, photographers, and archivists choose Dolce Colore over cloud web services.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <span class="pillar-icon">🔒</span>
+        <h3>100% Offline &amp; Private</h3>
+        <p>Your sensitive family albums and copyrighted archives never touch third-party servers. All neural networks run 100% locally on your computer.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">⚡</span>
+        <h3>DirectML GPU Acceleration</h3>
+        <p>Native hardware acceleration across Windows (DirectX 12 / DirectML on NVIDIA, AMD, Intel Arc) and macOS (Apple Silicon MPS). Instant renders without GPU cloud queues.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🎨</span>
+        <h3>CIE L*a*b* Sharpness Retention</h3>
+        <p>Only the chromatic color channels (a*, b*) are synthesized. The original luminance (L*) remains unaltered, preventing the muddy blur of typical web filters.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🎬</span>
+        <h3>Cinema Video Colorizer</h3>
+        <p>Colorize historical film reels and clips up to 60 FPS with temporal consistency filters that minimize frame flicker between shots.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing & Edition Comparison (LemonSqueezy & Merchant Compliance) -->
+  <section id="pricing" style="margin-bottom:5rem">
+    <div style="text-align:center;max-width:720px;margin:0 auto 2rem">
+      <div class="badge-tag">
+        <span class="status-dot"></span>
+        <span>Transparent Pricing</span>
+      </div>
+      <h2 class="section-title">Choose Your Edition</h2>
+      <p class="section-desc">No subscriptions. No credit meters. Own your creative tools for life.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Community Edition -->
+      <div class="pricing-card">
+        <h3 style="font-size:1.4rem;font-weight:700">Community Edition</h3>
+        <p style="color:var(--text-muted);font-size:0.92rem;margin-top:0.35rem">Essential local colorization for casual personal projects.</p>
+        <div class="price-amount">
+          <span class="price-currency">$</span>0
+          <span class="price-period">free &amp; open source</span>
+        </div>
+        <ul class="pricing-features">
+          <li>${ICONS.check} <span>100% Offline local neural inference</span></li>
+          <li>${ICONS.check} <span>Single photo colorization</span></li>
+          <li>${ICONS.check} <span>Standard export resolution (up to 1080p)</span></li>
+          <li>${ICONS.check} <span>CPU &amp; basic DirectML acceleration</span></li>
+          <li>${ICONS.check} <span>GPL-3.0 open source license</span></li>
+          <li class="disabled">&times; <span>Cinema video colorizer engine</span></li>
+          <li class="disabled">&times; <span>Ultra 4K batch rendering</span></li>
+          <li class="disabled">&times; <span>Priority customer support</span></li>
+        </ul>
+        <a href="https://github.com/ntropey/ai-colorer/releases" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          Download Free
+        </a>
+      </div>
+
+      <!-- Pro Lifetime Edition -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge-popular">Lifetime Deal</div>
+        <h3 style="font-size:1.4rem;font-weight:700;color:var(--accent)">Dolce Colore Pro</h3>
+        <p style="color:var(--text-muted);font-size:0.92rem;margin-top:0.35rem">Full studio powerhouse for archivists, studios, and creators.</p>
+        <div class="price-amount">
+          <span class="price-currency">$</span>39
+          <span class="price-period">one-time payment &middot; USD</span>
+        </div>
+        <ul class="pricing-features">
+          <li>${ICONS.check} <span><strong>Everything in Community</strong></span></li>
+          <li>${ICONS.check} <span><strong>Cinema Video Colorizer</strong> (up to 4K / 60 FPS)</span></li>
+          <li>${ICONS.check} <span><strong>Unlimited batch processing</strong> of photo folders</span></li>
+          <li>${ICONS.check} <span><strong>DirectML &amp; Apple Silicon GPU acceleration</strong></span></li>
+          <li>${ICONS.check} <span><strong>Offline algorithmic serial number</strong> (no phone-home)</span></li>
+          <li>${ICONS.check} <span><strong>Windows 1-click installer &amp; native macOS .dmg</strong></span></li>
+          <li>${ICONS.check} <span><strong>All v2.x updates included for life</strong></span></li>
+          <li>${ICONS.check} <span><strong>Priority email support</strong></span></li>
+        </ul>
+        <a href="https://revisitedlabs.lemonsqueezy.com/buy/dolce-colore" class="btn btn-primary" id="buy-pro-btn">
+          Buy Pro Lifetime &mdash; $39 USD &rarr;
+        </a>
+        <div class="guarantee-box">
+          <span class="guarantee-icon">🛡️</span>
+          <div>
+            <strong>30-Day Money-Back Guarantee:</strong> Try Dolce Colore Pro completely risk-free. If it doesn't exceed your expectations, email support@revisitedlabs.com for a full, instant refund.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- System Requirements -->
+  <section style="margin-bottom:5rem">
+    <h2 class="section-title">System Requirements</h2>
+    <p class="section-desc">Engineered to deliver fluid performance on modern Windows and Mac hardware.</p>
+
+    <div class="spec-grid">
+      <div class="spec-card">
+        <h4><span>🪟</span> Windows</h4>
+        <ul>
+          <li><strong>OS:</strong> Windows 10 (21H2+) or Windows 11 64-bit</li>
+          <li><strong>Processor:</strong> Intel Core i5 / AMD Ryzen 5 or newer</li>
+          <li><strong>GPU:</strong> DirectX 12 DirectML compatible GPU (NVIDIA GTX/RTX, AMD Radeon, Intel Arc/Iris)</li>
+          <li><strong>RAM:</strong> 8 GB recommended (4 GB minimum)</li>
+          <li><strong>Storage:</strong> 1.5 GB free disk space</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <h4><span>🍎</span> macOS</h4>
+        <ul>
+          <li><strong>OS:</strong> macOS 12 (Monterey), 13 (Ventura), 14 (Sonoma), 15 (Sequoia)</li>
+          <li><strong>Processor:</strong> Apple Silicon (M1, M2, M3, M4) or Intel x86_64</li>
+          <li><strong>GPU:</strong> Metal Performance Shaders (MPS) hardware acceleration</li>
+          <li><strong>RAM:</strong> 8 GB unified memory or higher</li>
+          <li><strong>Storage:</strong> 1.5 GB free disk space</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <h4><span>📦</span> Licensing &amp; Delivery</h4>
+        <ul>
+          <li><strong>Delivery:</strong> Instant digital license key and download link via email</li>
+          <li><strong>Activation:</strong> 100% offline mathematical validation; no server tracking</li>
+          <li><strong>Seats:</strong> Valid for personal use across your desktop and laptop</li>
+          <li><strong>Merchant:</strong> Revisited Labs &middot; Fast, secure checkout via LemonSqueezy</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section style="margin-bottom:4rem">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-desc">Everything you need to know about purchasing, licensing, and running Dolce Colore.</p>
+
+    <div class="faq-list">
+      <div class="faq-card">
+        <h3>Do my photos or videos ever get uploaded to a cloud server?</h3>
+        <p>Never. Dolce Colore is a true native desktop application. All AI neural network inference runs 100% locally on your computer’s processor or GPU. Your private family photographs, clients' assets, and archives never leave your machine.</p>
+      </div>
+      <div class="faq-card">
+        <h3>How does the licensing key work? Can I use it offline?</h3>
+        <p>Dolce Colore Pro uses an offline cryptographic salt algorithm. When you purchase via LemonSqueezy, you immediately receive a license key (e.g., <code>DOLCE-XXXX-XXXX-XXXX-XXXX</code>). The app validates the key offline without contacting any verification servers. You can use it in air-gapped environments or without an active internet connection.</p>
+      </div>
+      <div class="faq-card">
+        <h3>What is your refund policy?</h3>
+        <p>We provide a <strong>30-day, no-questions-asked 100% money-back guarantee</strong>. If Dolce Colore does not perform up to your expectations on your hardware, contact us at <a href="mailto:support@revisitedlabs.com" style="color:var(--accent);text-decoration:underline">support@revisitedlabs.com</a> with your order number and we will issue an immediate refund.</p>
+      </div>
+      <div class="faq-card">
+        <h3>Is there a recurring subscription fee?</h3>
+        <p>No. Dolce Colore Pro is a one-time purchase of $39 USD. You own your license permanently with lifetime access to all v2.x updates. We believe professional creative tools should be owned, not rented.</p>
+      </div>
+      <div class="faq-card">
+        <h3>How do I contact customer support?</h3>
+        <p>You can reach our engineering team directly at <a href="mailto:support@revisitedlabs.com" style="color:var(--accent);text-decoration:underline">support@revisitedlabs.com</a>. We answer all inquiries within 24 hours.</p>
+      </div>
+    </div>
+  </section>
+  `,
+});
+
+const dolceDir = join(out, 'dolce-colore');
+if (!existsSync(dolceDir)) mkdirSync(dolceDir, { recursive: true });
+writeFileSync(join(dolceDir, 'index.html'), dolceHtml);
+writeFileSync(join(out, 'dolce-colore.html'), dolceHtml);
+
+// 5. Sitemap.xml & Robots.txt
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://revisitedlabs.com/</loc></url>
+  <url><loc>https://revisitedlabs.com/dolce-colore</loc></url>
   <url><loc>https://revisitedlabs.com/about.html</loc></url>
   <url><loc>https://revisitedlabs.com/privacy.html</loc></url>
 </urlset>
