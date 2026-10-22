@@ -2,8 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { execSync } from 'node:child_process';
 
 const dist = join(process.cwd(), 'dist');
+
+// Ensure build runs before assertions
+test.before(() => {
+  execSync('node src/build.mjs');
+});
 
 test('build outputs all pages and CNAME', () => {
   assert.ok(existsSync(join(dist, 'index.html')), 'index.html exists');
