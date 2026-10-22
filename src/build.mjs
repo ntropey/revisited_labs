@@ -208,6 +208,7 @@ function shell({ title, description, path, active, image, body }) {
   <nav class="main-nav">
     <a href="/" ${active === 'home' ? 'class="active"' : ''}>Suite</a>
     <a href="/dolce-colore" ${active === 'dolce' ? 'class="active"' : ''}>Dolce Colore</a>
+    <a href="https://revisitedlabs.lemonsqueezy.com/" target="_blank" rel="noopener noreferrer">Store</a>
     <a href="/about.html" ${active === 'about' ? 'class="active"' : ''}>About</a>
     <a href="/privacy.html" ${active === 'privacy' ? 'class="active"' : ''}>Privacy</a>
     <a href="https://github.com/ntropey" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -223,6 +224,7 @@ ${body}
     <p><strong>Revisited Labs</strong> &middot; Open-source remasters of classic desktop software under the GPL-3.0 license.</p>
     <div class="footer-links">
       <a href="/dolce-colore">Dolce Colore Pro</a>
+      <a href="https://revisitedlabs.lemonsqueezy.com/" target="_blank" rel="noopener noreferrer">LemonSqueezy Store</a>
       <a href="https://hodokurevisited.com">Hodoku Revisited</a>
       <a href="https://logisimrevisited.com">Logisim Revisited</a>
       <a href="https://kakurorevisited.com">Kakuro Revisited</a>
@@ -381,6 +383,8 @@ const privacyHtml = shell({
 writeFileSync(join(out, 'privacy.html'), privacyHtml);
 
 // 4. Dolce Colore Product Page
+const LEMONSQUEEZY_STORE_URL = 'https://revisitedlabs.lemonsqueezy.com/';
+
 const dolceHtml = shell({
   title: 'Dolce Colore - 1-Click Historical Photo & Video AI Colorizer',
   description: '100% private, native desktop AI colorizer for Windows & macOS. Restore historical photos and vintage cinema locally with DirectML GPU acceleration.',
@@ -511,7 +515,7 @@ const dolceHtml = shell({
           <li>${ICONS.check} <span><strong>All v2.x updates included for life</strong></span></li>
           <li>${ICONS.check} <span><strong>Priority email support</strong></span></li>
         </ul>
-        <a href="https://revisitedlabs.lemonsqueezy.com/buy/dolce-colore" class="btn btn-primary" id="buy-pro-btn">
+        <a href="${LEMONSQUEEZY_STORE_URL}" class="btn btn-primary" id="buy-pro-btn" target="_blank" rel="noopener noreferrer">
           Buy Pro Lifetime &mdash; $39 USD &rarr;
         </a>
         <div class="guarantee-box">
