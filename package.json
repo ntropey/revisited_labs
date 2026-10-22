@@ -1,0 +1,21 @@
+{
+  "name": "revisited-labs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Revisited Labs studio hub: modern remasters of classic desktop software.",
+  "type": "module",
+  "scripts": {
+    "build": "node src/build.mjs",
+    "test": "node --check src/build.mjs && node --test test/build.test.mjs"
+  },
+  "keywords": [
+    "revisited",
+    "hodoku",
+    "logisim",
+    "kakuro",
+    "nonogram",
+    "open-source"
+  ],
+  "author": "Garrett Wyrwas",
+  "license": "GPL-3.0-or-later"
+}
