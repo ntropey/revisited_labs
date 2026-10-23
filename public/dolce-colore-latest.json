@@ -1,0 +1,5 @@
+{
+  "version": "2.0.2",
+  "download_url": "https://revisitedlabs.com/dolce-colore",
+  "notes": "Add New photo and Clear buttons to the photo toolbar, show the real version number everywhere, and fix several upload edge cases."
+}
