@@ -50,3 +50,11 @@ test('every page has a skip link, a labeled main nav and a main landmark', () =>
   const about = readFileSync(join(dist, 'about.html'), 'utf8');
   assert.ok(about.includes('class="active" aria-current="page"'), 'current page is marked');
 });
+
+test('dolce-colore-latest.json is published and readable by the app', () => {
+  const manifest = JSON.parse(readFileSync(join(dist, 'dolce-colore-latest.json'), 'utf8'));
+  assert.match(manifest.version, /^\d+\.\d+\.\d+$/, 'version is x.y.z');
+  const url = new URL(manifest.download_url);
+  assert.equal(url.protocol, 'https:');
+  assert.ok(/(^|\.)(revisitedlabs\.com|lemonsqueezy\.com)$/.test(url.hostname), 'download host is allowed by the app');
+});
