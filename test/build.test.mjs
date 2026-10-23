@@ -39,3 +39,14 @@ test('dolce-colore page satisfies merchant compliance requirements', () => {
   assert.ok(dolce.includes('Money-Back Guarantee'), 'contains money-back guarantee');
   assert.ok(dolce.includes('DirectML'), 'contains DirectML specs');
 });
+
+test('every page has a skip link, a labeled main nav and a main landmark', () => {
+  for (const file of ['index.html', 'about.html', 'privacy.html', 'dolce-colore.html']) {
+    const html = readFileSync(join(dist, file), 'utf8');
+    assert.ok(html.includes('<a class="skip" href="#main">'), `${file} has a skip link`);
+    assert.ok(html.includes('<main id="main"'), `${file} main is the skip target`);
+    assert.ok(html.includes('<nav class="main-nav" aria-label="Main">'), `${file} nav is labeled`);
+  }
+  const about = readFileSync(join(dist, 'about.html'), 'utf8');
+  assert.ok(about.includes('class="active" aria-current="page"'), 'current page is marked');
+});
