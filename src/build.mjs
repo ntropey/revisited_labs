@@ -200,22 +200,23 @@ function shell({ title, description, path, active, image, body }) {
 </script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <a href="/" class="brand">
-    <img src="/favicon.svg" width="32" height="32" alt="Revisited Labs Logo">
+    <img src="/favicon.svg" width="32" height="32" alt="">
     <span>Revisited Labs</span>
   </a>
-  <nav class="main-nav">
-    <a href="/" ${active === 'home' ? 'class="active"' : ''}>Suite</a>
-    <a href="/dolce-colore" ${active === 'dolce' ? 'class="active"' : ''}>Dolce Colore</a>
+  <nav class="main-nav" aria-label="Main">
+    <a href="/" ${active === 'home' ? 'class="active" aria-current="page"' : ''}>Suite</a>
+    <a href="/dolce-colore" ${active === 'dolce' ? 'class="active" aria-current="page"' : ''}>Dolce Colore</a>
     <a href="https://revisitedlabs.lemonsqueezy.com/" target="_blank" rel="noopener noreferrer">Store</a>
-    <a href="/about.html" ${active === 'about' ? 'class="active"' : ''}>About</a>
-    <a href="/privacy.html" ${active === 'privacy' ? 'class="active"' : ''}>Privacy</a>
+    <a href="/about.html" ${active === 'about' ? 'class="active" aria-current="page"' : ''}>About</a>
+    <a href="/privacy.html" ${active === 'privacy' ? 'class="active" aria-current="page"' : ''}>Privacy</a>
     <a href="https://github.com/ntropey" target="_blank" rel="noopener noreferrer">GitHub</a>
   </nav>
 </header>
 
-<main class="container">
+<main id="main" class="container">
 ${body}
 </main>
 

@@ -663,3 +663,17 @@ footer.site-footer {
   max-width: 600px;
 }
 
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: var(--bg-card);
+  color: var(--text);
+  z-index: 100;
+}
+.skip:focus {
+  left: 8px;
+}
