@@ -36,7 +36,9 @@ test('dolce-colore page satisfies merchant compliance requirements', () => {
   const dolce = readFileSync(join(dist, 'dolce-colore.html'), 'utf8');
   assert.ok(dolce.includes('$39'), 'contains $39 price point');
   assert.ok(dolce.includes('support@revisitedlabs.com'), 'contains support email');
-  assert.ok(dolce.includes('Money-Back Guarantee'), 'contains money-back guarantee');
+  assert.ok(dolce.includes('What is your refund policy?'), 'states a refund policy');
+  assert.ok(dolce.includes('all sales are final'), 'refund policy says sales are final');
+  assert.ok(!/money-back/i.test(dolce), 'no money-back claim');
   assert.ok(dolce.includes('DirectML'), 'contains DirectML specs');
 });
 
