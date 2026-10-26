@@ -421,6 +421,7 @@ writeFileSync(join(out, 'privacy.html'), privacyHtml);
 
 // 4. Dolce Colore Product Page
 const LEMONSQUEEZY_STORE_URL = 'https://revisitedlabs.lemonsqueezy.com/';
+const LEMONSQUEEZY_CHECKOUT_URL = 'https://revisitedlabs.lemonsqueezy.com/checkout/buy/b9068f99-8a33-400f-a1aa-bcd03424b193';
 
 const dolceHtml = shell({
   title: 'Dolce Colore - AI Photo & Video Colorizer',
@@ -612,7 +613,7 @@ const dolceHtml = shell({
           <li>${ICONS.check} <span><strong>All v2.x updates included for life</strong></span></li>
           <li>${ICONS.check} <span><strong>Priority email support</strong></span></li>
         </ul>
-        <a href="${LEMONSQUEEZY_STORE_URL}" class="btn btn-primary" id="buy-pro-btn" target="_blank" rel="noopener noreferrer">
+        <a href="${LEMONSQUEEZY_CHECKOUT_URL}" class="btn btn-primary" id="buy-pro-btn" target="_blank" rel="noopener noreferrer">
           Buy Pro Lifetime &mdash; $39 USD &rarr;
         </a>
         <div class="guarantee-box">
