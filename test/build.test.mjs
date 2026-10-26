@@ -40,6 +40,7 @@ test('dolce-colore page satisfies merchant compliance requirements', () => {
   assert.ok(dolce.includes('all sales are final'), 'refund policy says sales are final');
   assert.ok(!/money-back/i.test(dolce), 'no money-back claim');
   assert.ok(dolce.includes('DirectML'), 'contains DirectML specs');
+  assert.ok(dolce.includes('/checkout/buy/'), 'buy button targets the product checkout');
 });
 
 test('every page has a skip link, a labeled main nav and a main landmark', () => {
