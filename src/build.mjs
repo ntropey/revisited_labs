@@ -164,8 +164,8 @@ const TOOLS = [
   },
 ];
 
-function shell({ title, description, path, active, image, imageAlt, schema = [], body }) {
-  const canonical = `https://revisitedlabs.com${path === '/' ? '/' : path}`;
+function shell({ title, description, path, active, image, imageAlt, schema = [], canonical: canonicalOverride, body }) {
+  const canonical = canonicalOverride || `https://revisitedlabs.com${path === '/' ? '/' : path}`;
   const ogImg = image || 'https://revisitedlabs.com/social-hub.png';
   const ogAlt = imageAlt || 'Revisited Labs software suite';
   const esc = (value) => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
@@ -429,6 +429,7 @@ const dolceHtml = shell({
   active: 'dolce',
   image: 'https://revisitedlabs.com/dolce-social.png',
   imageAlt: 'Dolce Colore before-and-after photo colorization comparison',
+  canonical: 'https://dolcecolore.com/',
   schema: [
     {
       '@context': 'https://schema.org',
@@ -444,7 +445,7 @@ const dolceHtml = shell({
         price: '39',
         priceCurrency: 'USD',
         availability: 'https://schema.org/InStock',
-        url: 'https://revisitedlabs.com/dolce-colore',
+        url: 'https://dolcecolore.com/',
       },
     },
     {
@@ -452,7 +453,7 @@ const dolceHtml = shell({
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://revisitedlabs.com/' },
-        { '@type': 'ListItem', position: 2, name: 'Dolce Colore', item: 'https://revisitedlabs.com/dolce-colore' },
+        { '@type': 'ListItem', position: 2, name: 'Dolce Colore', item: 'https://dolcecolore.com/' },
       ],
     },
     {
