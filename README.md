@@ -8,7 +8,8 @@
     <a href="https://hodokurevisited.com">Hodoku</a> ·
     <a href="https://logisimrevisited.com">Logisim</a> ·
     <a href="https://kakurorevisited.com">Kakuro</a> ·
-    <a href="https://nonogramrevisited.com">Nonogram</a>
+    <a href="https://nonogramrevisited.com">Nonogram</a> ·
+    <a href="https://revisitedlabs.com/dolce-colore">Dolce Colore</a>
   </p>
 
   <p>
@@ -21,12 +22,13 @@
 
 ## The Revisited Suite
 
-Revisited Labs rescues algorithmically brilliant, classic desktop software (originally written in Java Swing/AWT between 2000 and 2015) and remasters them as modern, zero-install, offline-capable progressive web apps with local symbolic AI coaching:
+Revisited Labs rescues algorithmically brilliant, classic desktop software (originally written in Java Swing/AWT between 2000 and 2015) and remasters it as modern, offline-capable progressive web apps and native desktop apps with local symbolic AI coaching:
 
 - 🧩 **[Hodoku Revisited](https://hodokurevisited.com)** — Bernhard Hobiger's HoDoKu 2.2.0 Sudoku solver & Socratic AI Coach.
 - ⚡ **[Logisim Revisited](https://logisimrevisited.com)** — Carl Burch's Logisim 2.7.1 digital logic simulator, 4-state engine, and K-Map synthesis.
 - 🔢 **[Kakuro Revisited](https://kakurorevisited.com)** — Kakuro (Cross Sums) generator, solver, and complete sum-combinations cheat sheet.
 - ⬛ **[Nonogram Revisited](https://nonogramrevisited.com)** — Picross line-logic trainer & solver inspired by FreeNono.
+- 🎨 **[Dolce Colore](https://revisitedlabs.com/dolce-colore)** — Private, local AI photo and film colorizer for Windows and macOS.
 
 ## Quick Start
 
