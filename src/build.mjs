@@ -473,7 +473,7 @@ const dolceHtml = shell({
           name: 'What is your refund policy?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'We provide a 30-day, no-questions-asked money-back guarantee. Contact support@revisitedlabs.com with your order number and we will issue a refund.',
+            text: 'Dolce Colore Pro is a one-time digital purchase and all sales are final. The full-featured Community Edition is free, so you can test it on your own photos and hardware before buying. If you hit a technical problem, contact support@revisitedlabs.com.',
           },
         },
         {
@@ -505,7 +505,7 @@ const dolceHtml = shell({
       </a>
     </div>
     <p style="font-size:0.85rem;color:var(--text-muted);margin-top:-0.5rem">
-      One-time payment &middot; Online activation, then fully offline &middot; 30-day guarantee
+      One-time payment &middot; Online activation, then fully offline &middot; Free Community Edition to try first
     </p>
   </section>
 
