@@ -165,23 +165,36 @@ const TOOLS = [
   },
 ];
 
-function shell({ title, description, path, active, image, body }) {
+function shell({ title, description, path, active, image, imageAlt, schema = [], body }) {
   const canonical = `https://revisitedlabs.com${path === '/' ? '/' : path}`;
-  const ogImg = image || 'https://revisitedlabs.com/favicon.svg';
+  const ogImg = image || 'https://revisitedlabs.com/social-hub.png';
+  const ogAlt = imageAlt || 'Revisited Labs software suite';
+  const esc = (value) => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  const extraSchema = schema
+    .map((obj) => `<script type="application/ld+json">
+${JSON.stringify(obj).replace(/</g, '\\u003c')}
+</script>`)
+    .join('\n');
   return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${title} | Revisited Labs</title>
-<meta name="description" content="${description}">
+<title>${esc(title)} | Revisited Labs</title>
+<meta name="description" content="${esc(description)}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Revisited Labs">
-<meta property="og:title" content="${title} | Revisited Labs">
-<meta property="og:description" content="${description}">
+<meta property="og:title" content="${esc(title)} | Revisited Labs">
+<meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${ogImg}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(ogAlt)}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)} | Revisited Labs">
+<meta name="twitter:description" content="${esc(description)}">
+<meta name="twitter:image" content="${ogImg}">
 <link rel="canonical" href="${canonical}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/site.css">
@@ -192,12 +205,13 @@ function shell({ title, description, path, active, image, body }) {
   "name": "Revisited Labs",
   "url": "https://revisitedlabs.com",
   "logo": "https://revisitedlabs.com/favicon.svg",
-  "description": "Modern remasters of classic desktop software. Zero install, privacy-first, powered by local symbolic AI.",
+  "description": "Modern remasters of classic desktop software: four free browser apps and one native desktop studio, built to run locally.",
   "sameAs": [
     "https://github.com/ntropey"
   ]
 }
 </script>
+${extraSchema}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -222,7 +236,7 @@ ${body}
 
 <footer class="site-footer">
   <div class="footer-top">
-    <p><strong>Revisited Labs</strong> &middot; Open-source remasters of classic desktop software under the GPL-3.0 license.</p>
+    <p><strong>Revisited Labs</strong> &middot; Remasters of classic desktop software. Four browser apps are GPL-3.0; Dolce Colore is a commercial desktop app.</p>
     <div class="footer-links">
       <a href="/dolce-colore">Dolce Colore Pro</a>
       <a href="https://revisitedlabs.lemonsqueezy.com/" target="_blank" rel="noopener noreferrer">LemonSqueezy Store</a>
@@ -243,23 +257,46 @@ ${body}
 
 // 1. Home Page
 const homeHtml = shell({
-  title: 'Modern Remasters of Classic Desktop Software',
-  description: 'Revisited Labs modernizes beloved classic desktop tools (HoDoKu, Logisim, Kakuro, Nonograms) into zero-install web apps with local symbolic AI coaches.',
+  title: 'Classic Desktop Software, Remastered',
+  description: 'Revisited Labs rebuilds classic desktop tools (HoDoKu, Logisim, Kakuro, Nonogram) as free web apps, plus Dolce Colore, a private local AI colorizer.',
   path: '/',
   active: 'home',
+  image: 'https://revisitedlabs.com/social-hub.png',
+  schema: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Revisited Labs',
+      url: 'https://revisitedlabs.com',
+      description: 'Revisited Labs rebuilds classic desktop tools as free web apps, plus Dolce Colore, a private local AI colorizer.',
+      inLanguage: 'en',
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Revisited Labs software suite',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, url: 'https://revisitedlabs.com/dolce-colore' },
+        { '@type': 'ListItem', position: 2, url: 'https://logisimrevisited.com' },
+        { '@type': 'ListItem', position: 3, url: 'https://hodokurevisited.com' },
+        { '@type': 'ListItem', position: 4, url: 'https://kakurorevisited.com' },
+        { '@type': 'ListItem', position: 5, url: 'https://nonogramrevisited.com' },
+      ],
+    },
+  ],
   body: `
   <section class="hero">
     <div class="badge-tag">
       <span class="status-dot"></span>
-      <span>Software Studio &middot; Open Source &middot; Zero Install</span>
+      <span>Classic Software &middot; Local AI &middot; Private</span>
     </div>
     <h1>Classic desktop software,<br>revisited for the modern web.</h1>
-    <p class="lead">We take revered, abandoned desktop programs and rebuild them as fast, offline-capable progressive web apps powered by local symbolic AI coaches. No installs. No paywalls. 100% private.</p>
+    <p class="lead">We take revered, abandoned desktop programs and rebuild them as fast, offline-capable apps powered by local symbolic AI coaches. Four free browser apps and one native desktop studio. No cloud, no telemetry.</p>
   </section>
 
   <section>
     <h2 class="section-title">The Revisited Suite</h2>
-    <p class="section-desc">Four classic software engines modernized in TypeScript, running entirely inside your browser.</p>
+    <p class="section-desc">Four browser remasters plus a native desktop colorizer, built to run locally.</p>
 
     <div class="grid-bento">
       ${TOOLS.map(t => `
@@ -342,7 +379,7 @@ const aboutHtml = shell({
     <p><strong>Revisited Labs</strong> was born to solve that problem. We rescue these masterpieces, modernize them with clean TypeScript and modern Web Standards, and enhance them with <strong>Symbolic AI Coaches</strong> that help students, puzzle lovers, and engineers understand <em>why</em> a move works.</p>
 
     <h2 style="font-family:var(--font-serif);font-size:1.75rem;margin-top:1.5rem">Our Open Source Commitment</h2>
-    <p>Every tool in our suite is free and open-source under the GNU General Public License (GPL-3.0). We believe essential educational tools should never be locked behind subscriptions or restrictive accounts.</p>
+    <p>All four browser apps in our suite are free and open-source under the GNU General Public License (GPL-3.0). Dolce Colore is a separate commercial desktop product sold under its own license. We believe essential educational tools should never be locked behind subscriptions or restrictive accounts.</p>
 
     <p><a href="/" style="color:var(--accent);font-weight:600">&larr; Return to Suite Overview</a></p>
   </div>
@@ -387,11 +424,69 @@ writeFileSync(join(out, 'privacy.html'), privacyHtml);
 const LEMONSQUEEZY_STORE_URL = 'https://revisitedlabs.lemonsqueezy.com/';
 
 const dolceHtml = shell({
-  title: 'Dolce Colore - 1-Click Historical Photo & Video AI Colorizer',
+  title: 'Dolce Colore - AI Photo & Video Colorizer',
   description: '100% private, native desktop AI colorizer for Windows & macOS. Restore historical photos and vintage cinema locally with DirectML GPU acceleration.',
   path: '/dolce-colore',
   active: 'dolce',
-  image: 'https://revisitedlabs.com/dolce-icon.png',
+  image: 'https://revisitedlabs.com/dolce-social.png',
+  imageAlt: 'Dolce Colore before-and-after photo colorization comparison',
+  schema: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: 'Dolce Colore',
+      description: 'Native desktop AI colorizer for Windows and macOS. Restores monochrome photos and vintage video locally, with no cloud uploads.',
+      image: 'https://revisitedlabs.com/dolce-social.png',
+      brand: { '@type': 'Brand', name: 'Revisited Labs' },
+      category: 'MultimediaApplication',
+      operatingSystem: 'Windows 10, Windows 11, macOS 12+',
+      offers: {
+        '@type': 'Offer',
+        price: '39',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+        url: 'https://revisitedlabs.com/dolce-colore',
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://revisitedlabs.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Dolce Colore', item: 'https://revisitedlabs.com/dolce-colore' },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How does the licensing key work? Can I use it offline?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'You receive a license key by email after purchase. Enter it once while online to activate the app. The activation is stored on your device, so afterwards you can work fully offline; the app sends no usage telemetry.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What is your refund policy?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'We provide a 30-day, no-questions-asked money-back guarantee. Contact support@revisitedlabs.com with your order number and we will issue a refund.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Is there a recurring subscription fee?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'No. Dolce Colore Pro is a one-time purchase of $39 USD. You own your license permanently with lifetime access to all v2.x updates.',
+          },
+        },
+      ],
+    },
+  ],
   body: `
   <section class="hero" style="margin-bottom:3rem">
     <div class="badge-tag badge-pro">
@@ -399,7 +494,7 @@ const dolceHtml = shell({
       <span>v2.0 Native Desktop Suite &middot; Windows &amp; macOS &middot; 100% Offline</span>
     </div>
     <h1>Breathe life into history.<br>1-Click AI Photo &amp; Video Colorizer.</h1>
-    <p class="lead">Dolce Colore restores black-and-white family portraits, historical archives, and vintage cinema with local neural networks. Zero cloud uploads, zero subscription lock-in, 100% private on your own device.</p>
+    <p class="lead">Dolce Colore restores black-and-white family portraits, historical archives, and vintage cinema with local neural networks. Zero cloud uploads, zero subscription lock-in, 100% private on your own device. One of five Revisited Labs products.</p>
 
     <div class="btn-group">
       <a href="#pricing" class="btn btn-primary">
@@ -486,10 +581,11 @@ const dolceHtml = shell({
           <li>${ICONS.check} <span>100% Offline local neural inference</span></li>
           <li>${ICONS.check} <span>Single photo colorization</span></li>
           <li>${ICONS.check} <span>Standard export resolution (up to 1080p)</span></li>
-          <li>${ICONS.check} <span>CPU &amp; basic DirectML acceleration</span></li>
-          <li>${ICONS.check} <span>GPL-3.0 open source license</span></li>
+          <li>${ICONS.check} <span>Local CPU or GPU inference</span></li>
+          <li>${ICONS.check} <span>Free Community Edition license</span></li>
+          <li>${ICONS.check} <span>Batch runs of up to 10 photos</span></li>
           <li class="disabled">&times; <span>Cinema video colorizer engine</span></li>
-          <li class="disabled">&times; <span>Ultra 4K batch rendering</span></li>
+          <li class="disabled">&times; <span>4K exports and unlimited batches</span></li>
           <li class="disabled">&times; <span>Priority customer support</span></li>
         </ul>
         <a href="https://github.com/ntropey/ai-colorer/releases" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
@@ -510,8 +606,8 @@ const dolceHtml = shell({
           <li>${ICONS.check} <span><strong>Everything in Community</strong></span></li>
           <li>${ICONS.check} <span><strong>Cinema Video Colorizer</strong> (up to 4K / 60 FPS)</span></li>
           <li>${ICONS.check} <span><strong>Unlimited batch processing</strong> of photo folders</span></li>
-          <li>${ICONS.check} <span><strong>DirectML &amp; Apple Silicon GPU acceleration</strong></span></li>
-          <li>${ICONS.check} <span><strong>Offline algorithmic serial number</strong> (no phone-home)</span></li>
+          <li>${ICONS.check} <span><strong>GPU acceleration on Windows and macOS</strong></span></li>
+          <li>${ICONS.check} <span><strong>One-time online activation</strong>, then fully offline</span></li>
           <li>${ICONS.check} <span><strong>Windows 1-click installer &amp; native macOS .dmg</strong></span></li>
           <li>${ICONS.check} <span><strong>All v2.x updates included for life</strong></span></li>
           <li>${ICONS.check} <span><strong>Priority email support</strong></span></li>
@@ -559,7 +655,7 @@ const dolceHtml = shell({
         <h4><span>📦</span> Licensing &amp; Delivery</h4>
         <ul>
           <li><strong>Delivery:</strong> Instant digital license key and download link via email</li>
-          <li><strong>Activation:</strong> 100% offline mathematical validation; no server tracking</li>
+          <li><strong>Activation:</strong> one-time online check, then fully offline; no usage tracking</li>
           <li><strong>Seats:</strong> Valid for personal use across your desktop and laptop</li>
           <li><strong>Merchant:</strong> Revisited Labs &middot; Fast, secure checkout via LemonSqueezy</li>
         </ul>
@@ -579,7 +675,7 @@ const dolceHtml = shell({
       </div>
       <div class="faq-card">
         <h3>How does the licensing key work? Can I use it offline?</h3>
-        <p>Dolce Colore Pro uses an offline cryptographic salt algorithm. When you purchase via LemonSqueezy, you immediately receive a license key (e.g., <code>DOLCE-XXXX-XXXX-XXXX-XXXX</code>). The app validates the key offline without contacting any verification servers. You can use it in air-gapped environments or without an active internet connection.</p>
+        <p>When you purchase via LemonSqueezy, you receive a license key by email. Enter it once while online to activate the app. The activation is stored on your device, so afterwards you can work fully offline, including in air-gapped environments; the app sends no usage telemetry.</p>
       </div>
       <div class="faq-card">
         <h3>What is your refund policy?</h3>

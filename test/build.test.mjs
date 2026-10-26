@@ -58,3 +58,24 @@ test('dolce-colore-latest.json is published and readable by the app', () => {
   assert.equal(url.protocol, 'https:');
   assert.ok(/(^|\.)(revisitedlabs\.com|lemonsqueezy\.com)$/.test(url.hostname), 'download host is allowed by the app');
 });
+
+test('index.html copy no longer claims zero paywalls and lists the whole suite', () => {
+  const index = readFileSync(join(dist, 'index.html'), 'utf8');
+  assert.ok(!index.includes('No paywalls'), 'drops the "No paywalls" claim');
+  assert.ok(index.includes('Dolce Colore'), 'names Dolce Colore in the suite copy');
+  assert.ok(!index.includes('Four classic software engines'), 'drops the four-engine phrasing');
+});
+
+test('index.html ships hub social metadata and WebSite schema', () => {
+  const index = readFileSync(join(dist, 'index.html'), 'utf8');
+  assert.ok(index.includes('social-hub.png'), 'home page shares the hub image');
+  assert.ok(index.includes('"@type":"WebSite"'), 'home page has WebSite JSON-LD');
+  assert.ok(index.includes('"@type":"ItemList"'), 'home page lists the suite products');
+});
+
+test('dolce-colore page ships product and FAQ structured data', () => {
+  const dolce = readFileSync(join(dist, 'dolce-colore.html'), 'utf8');
+  assert.ok(dolce.includes('"@type":"Product"'), 'has Product JSON-LD');
+  assert.ok(dolce.includes('"price":"39"'), 'Product offer price is 39');
+  assert.ok(dolce.includes('"@type":"FAQPage"'), 'has FAQPage JSON-LD');
+});

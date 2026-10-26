@@ -8,6 +8,7 @@ Guidance for AI coding agents and contributors working in `revisited_labs`.
 - [Logisim Revisited](https://logisimrevisited.com)
 - [Kakuro Revisited](https://kakurorevisited.com)
 - [Nonogram Revisited](https://nonogramrevisited.com)
+- [Dolce Colore](https://revisitedlabs.com/dolce-colore) (in `../ai-colorer`)
 
 ## Architecture
 - Zero-dependency static site generator in `src/build.mjs`.
@@ -23,4 +24,4 @@ npm test           # Runs tests and verifies build integrity
 ## Guidelines
 - Keep user-facing copy in **American spelling**.
 - Keep dependencies at zero; the site is intentionally fast, pure, and lightweight.
-- Ensure all four sister sites remain prominently linked.
+- Ensure all five products remain prominently linked.
