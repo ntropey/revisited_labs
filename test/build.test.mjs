@@ -25,7 +25,7 @@ test('build outputs all pages and CNAME', () => {
 
 test('index.html links to all revisited tools including dolce-colore', () => {
   const index = readFileSync(join(dist, 'index.html'), 'utf8');
-  assert.ok(index.includes('/dolce-colore'), 'links to dolce-colore');
+  assert.ok(index.includes('https://dolcecolore.com/'), 'links to dolcecolore.com');
   assert.ok(index.includes('https://hodokurevisited.com'), 'links to hodoku');
   assert.ok(index.includes('https://logisimrevisited.com'), 'links to logisim');
   assert.ok(index.includes('https://kakurorevisited.com'), 'links to kakuro');

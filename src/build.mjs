@@ -83,15 +83,14 @@ const ICONS = {
 const TOOLS = [
   {
     name: 'Dolce Colore',
-    url: '/dolce-colore',
+    url: 'https://dolcecolore.com/',
     icon: ICONS.dolce,
     span: 'card-span-12',
     tag: '1-Click Historical Photo & Video AI Colorizer',
     status: 'Native AI Desktop Suite',
-    domain: 'revisitedlabs.com/dolce-colore',
-    target: '_self',
+    domain: 'dolcecolore.com',
     cta: 'Explore Dolce Colore',
-    desc: 'Native desktop neural restoration suite for Windows and macOS. Re-animates monochrome family photos and historical footage with local DeOldify AI, DirectML GPU acceleration, and CIE L*a*b* micro-sharpness preservation. 100% private and offline.',
+    desc: 'Native desktop neural restoration suite for Windows and macOS. Re-animates monochrome family photos and historical footage with local DDColor AI, DirectML GPU acceleration, and CIE L*a*b* micro-sharpness preservation. Private and local.',
     features: [
       '100% offline local neural inference (DirectML GPU, Apple Silicon MPS & CPU)',
       'CIE L*a*b* color space separation: zero lost sharpness or altered grain',
@@ -222,7 +221,7 @@ ${extraSchema}
   </a>
   <nav class="main-nav" aria-label="Main">
     <a href="/" ${active === 'home' ? 'class="active" aria-current="page"' : ''}>Suite</a>
-    <a href="/dolce-colore" ${active === 'dolce' ? 'class="active" aria-current="page"' : ''}>Dolce Colore</a>
+    <a href="https://dolcecolore.com/" target="_blank" rel="noopener noreferrer">Dolce Colore</a>
     <a href="https://revisitedlabs.lemonsqueezy.com/" target="_blank" rel="noopener noreferrer">Store</a>
     <a href="/about.html" ${active === 'about' ? 'class="active" aria-current="page"' : ''}>About</a>
     <a href="/privacy.html" ${active === 'privacy' ? 'class="active" aria-current="page"' : ''}>Privacy</a>
@@ -238,7 +237,7 @@ ${body}
   <div class="footer-top">
     <p><strong>Revisited Labs</strong> &middot; Remasters of classic desktop software. Four browser apps are GPL-3.0; Dolce Colore is a commercial desktop app.</p>
     <div class="footer-links">
-      <a href="/dolce-colore">Dolce Colore Pro</a>
+      <a href="https://dolcecolore.com/" target="_blank" rel="noopener noreferrer">Dolce Colore Pro</a>
       <a href="https://revisitedlabs.lemonsqueezy.com/" target="_blank" rel="noopener noreferrer">LemonSqueezy Store</a>
       <a href="https://hodokurevisited.com">Hodoku Revisited</a>
       <a href="https://logisimrevisited.com">Logisim Revisited</a>
@@ -276,7 +275,7 @@ const homeHtml = shell({
       '@type': 'ItemList',
       name: 'Revisited Labs software suite',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, url: 'https://revisitedlabs.com/dolce-colore' },
+        { '@type': 'ListItem', position: 1, url: 'https://dolcecolore.com/' },
         { '@type': 'ListItem', position: 2, url: 'https://logisimrevisited.com' },
         { '@type': 'ListItem', position: 3, url: 'https://hodokurevisited.com' },
         { '@type': 'ListItem', position: 4, url: 'https://kakurorevisited.com' },
@@ -505,7 +504,7 @@ const dolceHtml = shell({
       </a>
     </div>
     <p style="font-size:0.85rem;color:var(--text-muted);margin-top:-0.5rem">
-      One-time payment &middot; Instant offline license key &middot; 30-day money-back guarantee
+      One-time payment &middot; Online activation, then fully offline &middot; 30-day guarantee
     </p>
   </section>
 
@@ -703,7 +702,6 @@ writeFileSync(join(out, 'dolce-colore.html'), dolceHtml);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://revisitedlabs.com/</loc></url>
-  <url><loc>https://revisitedlabs.com/dolce-colore</loc></url>
   <url><loc>https://revisitedlabs.com/about.html</loc></url>
   <url><loc>https://revisitedlabs.com/privacy.html</loc></url>
 </urlset>
