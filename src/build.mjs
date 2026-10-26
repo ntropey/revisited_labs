@@ -616,9 +616,9 @@ const dolceHtml = shell({
           Buy Pro Lifetime &mdash; $39 USD &rarr;
         </a>
         <div class="guarantee-box">
-          <span class="guarantee-icon">🛡️</span>
+          <span class="guarantee-icon">🎨</span>
           <div>
-            <strong>30-Day Money-Back Guarantee:</strong> Try Dolce Colore Pro completely risk-free. If it doesn't exceed your expectations, email support@revisitedlabs.com for a full, instant refund.
+            <strong>Try it free first:</strong> The Community Edition colorizes unlimited photos at no cost, so you can see exactly how Dolce Colore performs on your own photos and computer before you buy Pro. Pro is a final-sale, one-time purchase. If something isn't working, email support@revisitedlabs.com and we'll help.
           </div>
         </div>
       </div>
@@ -679,7 +679,7 @@ const dolceHtml = shell({
       </div>
       <div class="faq-card">
         <h3>What is your refund policy?</h3>
-        <p>We provide a <strong>30-day, no-questions-asked 100% money-back guarantee</strong>. If Dolce Colore does not perform up to your expectations on your hardware, contact us at <a href="mailto:support@revisitedlabs.com" style="color:var(--accent);text-decoration:underline">support@revisitedlabs.com</a> with your order number and we will issue an immediate refund.</p>
+        <p>Dolce Colore Pro is a one-time digital purchase and all sales are final. That is why the full-featured <strong>Community Edition is free</strong>: download it and test it on your own photos and hardware before you decide to buy. If you hit a technical problem, contact us at <a href="mailto:support@revisitedlabs.com" style="color:var(--accent);text-decoration:underline">support@revisitedlabs.com</a> and we will work with you to fix it. This does not affect any rights you have under the consumer laws where you live.</p>
       </div>
       <div class="faq-card">
         <h3>Is there a recurring subscription fee?</h3>
