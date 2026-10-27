@@ -421,7 +421,11 @@ writeFileSync(join(out, 'privacy.html'), privacyHtml);
 
 // 4. Dolce Colore Product Page
 const LEMONSQUEEZY_STORE_URL = 'https://revisitedlabs.lemonsqueezy.com/';
-const LEMONSQUEEZY_CHECKOUT_URL = 'https://revisitedlabs.lemonsqueezy.com/checkout/buy/b9068f99-8a33-400f-a1aa-bcd03424b193';
+// Free Community Edition is delivered by two LemonSqueezy lead-magnet variants.
+const COMMUNITY_WINDOWS_URL = 'https://revisitedlabs.lemonsqueezy.com/checkout/buy/b9068f99-8a33-400f-a1aa-bcd03424b193';
+const COMMUNITY_MACOS_URL = 'https://revisitedlabs.lemonsqueezy.com/checkout/buy/faed4610-6a87-4641-b7cb-9b16065c1470';
+// No paid variant is published yet, so Pro points at the store until it exists.
+const PRO_CHECKOUT_URL = LEMONSQUEEZY_STORE_URL;
 
 const dolceHtml = shell({
   title: 'Dolce Colore - AI Photo & Video Colorizer',
@@ -501,12 +505,15 @@ const dolceHtml = shell({
       <a href="#pricing" class="btn btn-primary">
         <span>Get Dolce Colore Pro &mdash; $39 Lifetime</span> &rarr;
       </a>
-      <a href="https://github.com/ntropey/ai-colorer/releases" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-        Download Community Edition (Free)
+      <a href="https://revisitedlabs.lemonsqueezy.com/checkout/buy/b9068f99-8a33-400f-a1aa-bcd03424b193" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+        Download Free &mdash; Windows
+      </a>
+      <a href="https://revisitedlabs.lemonsqueezy.com/checkout/buy/faed4610-6a87-4641-b7cb-9b16065c1470" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+        Download Free &mdash; macOS
       </a>
     </div>
     <p style="font-size:0.85rem;color:var(--text-muted);margin-top:-0.5rem">
-      One-time payment &middot; Online activation, then fully offline &middot; Free Community Edition to try first
+      One-time payment &middot; Online activation, then fully offline &middot; Free Community Edition, delivered by LemonSqueezy
     </p>
   </section>
 
@@ -589,9 +596,15 @@ const dolceHtml = shell({
           <li class="disabled">&times; <span>4K exports and unlimited batches</span></li>
           <li class="disabled">&times; <span>Priority customer support</span></li>
         </ul>
-        <a href="https://github.com/ntropey/ai-colorer/releases" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-          Download Free
-        </a>
+        <div class="btn-stack">
+          <a href="${COMMUNITY_WINDOWS_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            Download Free &mdash; Windows
+          </a>
+          <a href="${COMMUNITY_MACOS_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            Download Free &mdash; macOS
+          </a>
+        </div>
+        <p class="cta-note">Free download. LemonSqueezy asks for an email address so we can send the file and release notes.</p>
       </div>
 
       <!-- Pro Lifetime Edition -->
@@ -613,7 +626,7 @@ const dolceHtml = shell({
           <li>${ICONS.check} <span><strong>All v2.x updates included for life</strong></span></li>
           <li>${ICONS.check} <span><strong>Priority email support</strong></span></li>
         </ul>
-        <a href="${LEMONSQUEEZY_CHECKOUT_URL}" class="btn btn-primary" id="buy-pro-btn" target="_blank" rel="noopener noreferrer">
+        <a href="${PRO_CHECKOUT_URL}" class="btn btn-primary" id="buy-pro-btn" target="_blank" rel="noopener noreferrer">
           Buy Pro Lifetime &mdash; $39 USD &rarr;
         </a>
         <div class="guarantee-box">

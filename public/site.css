@@ -677,3 +677,7 @@ footer.site-footer {
 .skip:focus {
   left: 8px;
 }
+
+.btn-stack { display: grid; gap: .6rem; width: 100%; }
+.btn-stack .btn { width: 100%; }
+.cta-note { font-size: .78rem; line-height: 1.5; color: var(--text-muted); margin-top: .6rem; }
