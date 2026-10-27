@@ -1,4 +1,4 @@
-name: Deploy site to GitHub Pages
+name: Deploy site
 
 on:
   push:
@@ -17,6 +17,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -24,6 +26,19 @@ jobs:
           node-version: 22
       - run: npm run build
       - run: npm test
+      - name: Ensure Cloudflare Pages project exists
+        if: ${{ env.CF_TOKEN != '' }}
+        run: npx --yes wrangler pages project create revisited-labs --production-branch=main || true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 6c9d1596276c79e822640d0a8d429c60
+      - name: Deploy to Cloudflare Pages
+        if: ${{ env.CF_TOKEN != '' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 6c9d1596276c79e822640d0a8d429c60
+          command: pages deploy dist --project-name=revisited-labs --branch=main
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
