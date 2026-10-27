@@ -223,8 +223,8 @@ ${extraSchema}
     <a href="/" ${active === 'home' ? 'class="active" aria-current="page"' : ''}>Suite</a>
     <a href="https://dolcecolore.com/" target="_blank" rel="noopener noreferrer">Dolce Colore</a>
     <a href="https://revisitedlabs.lemonsqueezy.com/" target="_blank" rel="noopener noreferrer">Store</a>
-    <a href="/about.html" ${active === 'about' ? 'class="active" aria-current="page"' : ''}>About</a>
-    <a href="/privacy.html" ${active === 'privacy' ? 'class="active" aria-current="page"' : ''}>Privacy</a>
+    <a href="/about" ${active === 'about' ? 'class="active" aria-current="page"' : ''}>About</a>
+    <a href="/privacy" ${active === 'privacy' ? 'class="active" aria-current="page"' : ''}>Privacy</a>
     <a href="https://github.com/ntropey" target="_blank" rel="noopener noreferrer">GitHub</a>
   </nav>
 </header>
@@ -246,7 +246,7 @@ ${body}
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; ${new Date().getFullYear()} Revisited Labs &middot; Built with zero server tracking and 100% client-side compute &middot; <a href="/privacy.html">Privacy Policy</a> &middot; <a href="https://github.com/ntropey">Source Code</a></p>
+    <p>&copy; ${new Date().getFullYear()} Revisited Labs &middot; Built with zero server tracking and 100% client-side compute &middot; <a href="/privacy">Privacy Policy</a> &middot; <a href="https://github.com/ntropey">Source Code</a></p>
   </div>
 </footer>
 </body>
@@ -359,7 +359,7 @@ writeFileSync(join(out, 'index.html'), homeHtml);
 const aboutHtml = shell({
   title: 'About the Studio & Philosophy',
   description: 'The story behind Revisited Labs: why we rescue classic Java and desktop software and how we build zero-install web tools.',
-  path: '/about.html',
+  path: '/about',
   active: 'about',
   body: `
   <section class="hero" style="margin-bottom:3rem">
@@ -390,7 +390,7 @@ writeFileSync(join(out, 'about.html'), aboutHtml);
 const privacyHtml = shell({
   title: 'Privacy Policy',
   description: 'Revisited Labs privacy policy: 100% client-side compute, no personal tracking, and complete user control.',
-  path: '/privacy.html',
+  path: '/privacy',
   active: 'privacy',
   body: `
   <section class="hero" style="margin-bottom:3rem">
@@ -717,8 +717,8 @@ writeFileSync(join(out, 'dolce-colore.html'), dolceHtml);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://revisitedlabs.com/</loc></url>
-  <url><loc>https://revisitedlabs.com/about.html</loc></url>
-  <url><loc>https://revisitedlabs.com/privacy.html</loc></url>
+  <url><loc>https://revisitedlabs.com/about</loc></url>
+  <url><loc>https://revisitedlabs.com/privacy</loc></url>
 </urlset>
 `;
 writeFileSync(join(out, 'sitemap.xml'), sitemap);
