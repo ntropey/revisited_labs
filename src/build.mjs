@@ -503,18 +503,18 @@ const dolceHtml = shell({
     <p class="lead">Dolce Colore restores black-and-white family portraits, historical archives, and vintage cinema with local neural networks. Zero cloud uploads, zero subscription lock-in, 100% private on your own device. One of five Revisited Labs products.</p>
 
     <div class="btn-group">
-      <a href="${COMMUNITY_WINDOWS_URL}" class="btn btn-primary">
+      <a href="#pricing" class="btn btn-primary" style="background:linear-gradient(135deg, #f59e0b, #d97706);color:#0f172a;font-weight:700;border:none;box-shadow:0 4px 18px rgba(245,158,11,0.35)">
+        Get Dolce Colore Pro &mdash; $39 Lifetime &rarr;
+      </a>
+      <a href="${COMMUNITY_WINDOWS_URL}" class="btn btn-secondary">
         Download Free &mdash; Windows
       </a>
-      <a href="${COMMUNITY_MACOS_URL}" class="btn btn-primary">
+      <a href="${COMMUNITY_MACOS_URL}" class="btn btn-secondary">
         Download Free &mdash; macOS
-      </a>
-      <a href="#pricing" class="btn btn-secondary">
-        Get Pro &mdash; $39
       </a>
     </div>
     <p style="font-size:0.85rem;color:var(--text-muted);margin-top:-0.5rem">
-      Free Community Edition, no license key or email needed (<a href="${COMMUNITY_PORTABLE_URL}" style="color:var(--accent);text-decoration:underline">Windows Portable .zip</a>) &middot; Pro is a one-time $39 &middot; Runs fully offline
+      One-time $39 purchase &middot; No subscriptions &middot; Test your GPU first with the free Community Edition (<a href="${COMMUNITY_PORTABLE_URL}" style="color:var(--accent);text-decoration:underline">Portable .zip</a>)
     </p>
   </section>
 
@@ -568,47 +568,45 @@ const dolceHtml = shell({
 
   <!-- Pricing & Edition Comparison (LemonSqueezy & Merchant Compliance) -->
   <section id="pricing" style="margin-bottom:5rem">
-    <div style="text-align:center;max-width:720px;margin:0 auto 2rem">
-      <div class="badge-tag">
-        <span class="status-dot"></span>
-        <span>Transparent Pricing</span>
+    <div style="text-align:center;max-width:780px;margin:0 auto 2rem">
+      <div class="badge-tag" style="background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.35);color:#f59e0b">
+        <span class="status-dot" style="background:#f59e0b;box-shadow:0 0 8px #f59e0b"></span>
+        <span>Own It For Life &middot; Zero Subscriptions</span>
       </div>
       <h2 class="section-title">Choose Your Edition</h2>
-      <p class="section-desc">No subscriptions. No credit meters. Own your creative tools for life.</p>
+      <p class="section-desc" style="font-size:1.05rem">Cloud colorizers charge <strong>$15&ndash;$29 every month</strong> and upload your private family memories to remote servers. Dolce Colore Pro is <strong>$39 once</strong> &mdash; 100% offline, full original resolution, own it forever.</p>
     </div>
 
     <div class="pricing-grid">
       <!-- Community Edition -->
-      <div class="pricing-card">
+      <div class="pricing-card" style="opacity:0.92">
         <h3 style="font-size:1.4rem;font-weight:700">Community Edition</h3>
-        <p style="color:var(--text-muted);font-size:0.92rem;margin-top:0.35rem">Essential local colorization for casual personal projects.</p>
+        <p style="color:var(--text-muted);font-size:0.92rem;margin-top:0.35rem">Free preview tier to test AI colorization on your own PC.</p>
         <div class="price-amount">
           <span class="price-currency">$</span>0
-          <span class="price-period">free</span>
+          <span class="price-period">free download</span>
         </div>
         <ul class="pricing-features">
           <li>${ICONS.check} <span>100% Offline local neural inference</span></li>
-          <li>${ICONS.check} <span>Single photo colorization</span></li>
-          <li>${ICONS.check} <span>Standard export resolution (up to 1080p)</span></li>
-          <li>${ICONS.check} <span>Local CPU or GPU inference</span></li>
-          <li>${ICONS.check} <span>Free Community Edition license</span></li>
-          <li>${ICONS.check} <span>Batch runs of up to 10 photos</span></li>
-          <li class="disabled">&times; <span>Cinema video colorizer engine</span></li>
-          <li class="disabled">&times; <span>4K exports and unlimited batches</span></li>
-          <li class="disabled">&times; <span>Priority customer support</span></li>
+          <li>${ICONS.check} <span>Single photo colorization & live grading</span></li>
+          <li>${ICONS.check} <span>Local CPU or GPU inference (DirectML / MPS)</span></li>
+          <li class="disabled">&times; <span><strong>Web resolution cap (1080p / 2 MP max)</strong></span></li>
+          <li class="disabled">&times; <span><strong>Batches capped at 10 photos</strong></span></li>
+          <li class="disabled">&times; <span><strong>No Cinema Video Colorizer</strong></span></li>
+          <li class="disabled">&times; <span>No priority engineering support</span></li>
         </ul>
         <div class="btn-stack">
           <a href="${COMMUNITY_WINDOWS_URL}" class="btn btn-secondary">
-            Download Free &mdash; Windows (.exe)
+            Try Free &mdash; Windows (.exe)
           </a>
           <a href="${COMMUNITY_PORTABLE_URL}" class="btn btn-secondary">
-            Download Free &mdash; Windows Portable (.zip)
+            Try Free &mdash; Windows Portable (.zip)
           </a>
           <a href="${COMMUNITY_MACOS_URL}" class="btn btn-secondary">
-            Download Free &mdash; macOS (.dmg)
+            Try Free &mdash; macOS (.dmg)
           </a>
         </div>
-        <p class="cta-note">Direct download. No account, email, or license key needed.</p>
+        <p class="cta-note">Direct download. Test your hardware before upgrading.</p>
       </div>
 
       <!-- Pro Lifetime Edition -->
@@ -633,10 +631,10 @@ const dolceHtml = shell({
         <a href="${PRO_CHECKOUT_URL}" class="btn btn-primary" id="buy-pro-btn" target="_blank" rel="noopener noreferrer">
           Buy Pro Lifetime &mdash; $39 USD &rarr;
         </a>
-        <div class="guarantee-box">
-          <span class="guarantee-icon">🎨</span>
+        <div class="guarantee-box" style="background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.25)">
+          <span class="guarantee-icon">⚡</span>
           <div>
-            <strong>Try it free first:</strong> The Community Edition colorizes unlimited photos at no cost, so you can see exactly how Dolce Colore performs on your own photos and computer before you buy Pro. Pro is a final-sale, one-time purchase. If something isn't working, email support@revisitedlabs.com and we'll help.
+            <strong>Instant License &amp; Lifetime Ownership:</strong> Your Pro license key is delivered immediately after checkout. Activate once online, then work 100% offline forever across your personal desktop and laptop. Includes all v2.x updates and direct engineering support.
           </div>
         </div>
       </div>
