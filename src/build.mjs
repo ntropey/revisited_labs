@@ -197,6 +197,7 @@ ${JSON.stringify(obj).replace(/</g, '\\u003c')}
 <link rel="canonical" href="${canonical}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/site.css">
+${path === '/dolce-colore' ? '<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>' : ''}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -249,6 +250,13 @@ ${body}
     <p>&copy; ${new Date().getFullYear()} Revisited Labs &middot; Built with zero server tracking and 100% client-side compute &middot; <a href="/privacy">Privacy Policy</a> &middot; <a href="https://github.com/ntropey">Source Code</a></p>
   </div>
 </footer>
+${path === '/dolce-colore' ? `<script>
+window.addEventListener('load', function() {
+  if (window.createLemonSqueezy) {
+    window.createLemonSqueezy();
+  }
+});
+</script>` : ''}
 </body>
 </html>
 `;
@@ -426,7 +434,7 @@ const COMMUNITY_WINDOWS_URL = 'https://dolcecolore.com/download/windows';
 const COMMUNITY_PORTABLE_URL = 'https://dolcecolore.com/download/windows-portable';
 const COMMUNITY_MACOS_URL = 'https://dolcecolore.com/download/macos';
 // No paid variant is published yet, so Pro points at the store until it exists.
-const PRO_CHECKOUT_URL = LEMONSQUEEZY_STORE_URL;
+const PRO_CHECKOUT_URL = 'https://revisitedlabs.lemonsqueezy.com/checkout/buy/d4db196e-016e-4bd8-82d7-91d04e4b14bc';
 
 const dolceHtml = shell({
   title: 'Dolce Colore - AI Photo & Video Colorizer',
@@ -503,7 +511,7 @@ const dolceHtml = shell({
     <p class="lead">Dolce Colore restores black-and-white family portraits, historical archives, and vintage cinema with local neural networks. Zero cloud uploads, zero subscription lock-in, 100% private on your own device. One of five Revisited Labs products.</p>
 
     <div class="btn-group">
-      <a href="#pricing" class="btn btn-primary" style="background:linear-gradient(135deg, #f59e0b, #d97706);color:#0f172a;font-weight:700;border:none;box-shadow:0 4px 18px rgba(245,158,11,0.35)">
+      <a href="https://revisitedlabs.lemonsqueezy.com/checkout/buy/d4db196e-016e-4bd8-82d7-91d04e4b14bc" class="btn btn-primary lemmas-checkout-btn" style="background:linear-gradient(135deg, #f59e0b, #d97706);color:#0f172a;font-weight:700;border:none;box-shadow:0 4px 18px rgba(245,158,11,0.35)" target="_blank" rel="noopener noreferrer">
         Get Dolce Colore Pro &mdash; $39 Lifetime &rarr;
       </a>
       <a href="${COMMUNITY_WINDOWS_URL}" class="btn btn-secondary">
