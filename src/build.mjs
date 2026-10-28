@@ -421,9 +421,10 @@ writeFileSync(join(out, 'privacy.html'), privacyHtml);
 
 // 4. Dolce Colore Product Page
 const LEMONSQUEEZY_STORE_URL = 'https://revisitedlabs.lemonsqueezy.com/';
-// Free Community Edition is delivered by two LemonSqueezy lead-magnet variants.
-const COMMUNITY_WINDOWS_URL = 'https://revisitedlabs.lemonsqueezy.com/checkout/buy/b9068f99-8a33-400f-a1aa-bcd03424b193';
-const COMMUNITY_MACOS_URL = 'https://revisitedlabs.lemonsqueezy.com/checkout/buy/faed4610-6a87-4641-b7cb-9b16065c1470';
+// Free Community Edition is delivered directly via dolcecolore.com R2 redirects.
+const COMMUNITY_WINDOWS_URL = 'https://dolcecolore.com/download/windows';
+const COMMUNITY_PORTABLE_URL = 'https://dolcecolore.com/download/windows-portable';
+const COMMUNITY_MACOS_URL = 'https://dolcecolore.com/download/macos';
 // No paid variant is published yet, so Pro points at the store until it exists.
 const PRO_CHECKOUT_URL = LEMONSQUEEZY_STORE_URL;
 
@@ -502,18 +503,18 @@ const dolceHtml = shell({
     <p class="lead">Dolce Colore restores black-and-white family portraits, historical archives, and vintage cinema with local neural networks. Zero cloud uploads, zero subscription lock-in, 100% private on your own device. One of five Revisited Labs products.</p>
 
     <div class="btn-group">
-      <a href="#pricing" class="btn btn-primary">
-        <span>Get Dolce Colore Pro &mdash; $39 Lifetime</span> &rarr;
-      </a>
-      <a href="https://revisitedlabs.lemonsqueezy.com/checkout/buy/b9068f99-8a33-400f-a1aa-bcd03424b193" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+      <a href="${COMMUNITY_WINDOWS_URL}" class="btn btn-primary">
         Download Free &mdash; Windows
       </a>
-      <a href="https://revisitedlabs.lemonsqueezy.com/checkout/buy/faed4610-6a87-4641-b7cb-9b16065c1470" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+      <a href="${COMMUNITY_MACOS_URL}" class="btn btn-primary">
         Download Free &mdash; macOS
+      </a>
+      <a href="#pricing" class="btn btn-secondary">
+        Get Pro &mdash; $39
       </a>
     </div>
     <p style="font-size:0.85rem;color:var(--text-muted);margin-top:-0.5rem">
-      One-time payment &middot; Online activation, then fully offline &middot; Free Community Edition, delivered by LemonSqueezy
+      Free Community Edition, no license key or email needed (<a href="${COMMUNITY_PORTABLE_URL}" style="color:var(--accent);text-decoration:underline">Windows Portable .zip</a>) &middot; Pro is a one-time $39 &middot; Runs fully offline
     </p>
   </section>
 
@@ -583,7 +584,7 @@ const dolceHtml = shell({
         <p style="color:var(--text-muted);font-size:0.92rem;margin-top:0.35rem">Essential local colorization for casual personal projects.</p>
         <div class="price-amount">
           <span class="price-currency">$</span>0
-          <span class="price-period">free &amp; open source</span>
+          <span class="price-period">free</span>
         </div>
         <ul class="pricing-features">
           <li>${ICONS.check} <span>100% Offline local neural inference</span></li>
@@ -597,14 +598,17 @@ const dolceHtml = shell({
           <li class="disabled">&times; <span>Priority customer support</span></li>
         </ul>
         <div class="btn-stack">
-          <a href="${COMMUNITY_WINDOWS_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-            Download Free &mdash; Windows
+          <a href="${COMMUNITY_WINDOWS_URL}" class="btn btn-secondary">
+            Download Free &mdash; Windows (.exe)
           </a>
-          <a href="${COMMUNITY_MACOS_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-            Download Free &mdash; macOS
+          <a href="${COMMUNITY_PORTABLE_URL}" class="btn btn-secondary">
+            Download Free &mdash; Windows Portable (.zip)
+          </a>
+          <a href="${COMMUNITY_MACOS_URL}" class="btn btn-secondary">
+            Download Free &mdash; macOS (.dmg)
           </a>
         </div>
-        <p class="cta-note">Free download. LemonSqueezy asks for an email address so we can send the file and release notes.</p>
+        <p class="cta-note">Direct download. No account, email, or license key needed.</p>
       </div>
 
       <!-- Pro Lifetime Edition -->

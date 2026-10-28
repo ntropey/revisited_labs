@@ -41,8 +41,9 @@ test('dolce-colore page satisfies merchant compliance requirements', () => {
   assert.ok(!/money-back/i.test(dolce), 'no money-back claim');
   assert.ok(dolce.includes('DirectML'), 'contains DirectML specs');
   assert.ok(!dolce.includes('ai-colorer/releases'), 'no free download link to GitHub releases');
-  assert.ok(dolce.includes('/checkout/buy/b9068f99'), 'links the Windows free download');
-  assert.ok(dolce.includes('/checkout/buy/faed4610'), 'links the macOS free download');
+  assert.ok(dolce.includes('https://dolcecolore.com/download/windows'), 'links the Windows free download');
+  assert.ok(dolce.includes('https://dolcecolore.com/download/windows-portable'), 'links the Windows portable download');
+  assert.ok(dolce.includes('https://dolcecolore.com/download/macos'), 'links the macOS free download');
 });
 
 test('every page has a skip link, a labeled main nav and a main landmark', () => {
