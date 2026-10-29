@@ -62,7 +62,7 @@ test('dolce-colore-latest.json is published and readable by the app', () => {
   assert.match(manifest.version, /^\d+\.\d+\.\d+$/, 'version is x.y.z');
   const url = new URL(manifest.download_url);
   assert.equal(url.protocol, 'https:');
-  assert.ok(/(^|\.)(revisitedlabs\.com|lemonsqueezy\.com)$/.test(url.hostname), 'download host is allowed by the app');
+  assert.ok(/(^|\.)(revisitedlabs\.com|dolcecolore\.com|lemonsqueezy\.com)$/.test(url.hostname), 'download host is allowed by the app');
 });
 
 test('index.html copy no longer claims zero paywalls and lists the whole suite', () => {
