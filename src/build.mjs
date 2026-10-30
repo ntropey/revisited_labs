@@ -26,7 +26,7 @@ if (existsSync(cnamePath)) {
 
 // Custom Dual-Tone SVG Icons
 const ICONS = {
-  hodoku: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  hodoku: `<svg aria-hidden="true" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="40" height="40" rx="10" fill="#1E293B"/>
     <rect x="7" y="7" width="26" height="26" rx="4" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.4"/>
     <line x1="15.5" y1="7" x2="15.5" y2="33" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.4"/>
@@ -37,7 +37,7 @@ const ICONS = {
     <circle cx="28.5" cy="11.5" r="2" fill="#818CF8"/>
     <circle cx="11.5" cy="28.5" r="2" fill="#818CF8"/>
   </svg>`,
-  logisim: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  logisim: `<svg aria-hidden="true" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="40" height="40" rx="10" fill="#1E293B"/>
     <line x1="6" y1="14" x2="14" y2="14" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
     <line x1="6" y1="26" x2="14" y2="26" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
@@ -47,14 +47,14 @@ const ICONS = {
     <circle cx="6" cy="26" r="2" fill="#34D399"/>
     <circle cx="35" cy="20" r="2.5" fill="#F59E0B"/>
   </svg>`,
-  kakuro: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  kakuro: `<svg aria-hidden="true" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="40" height="40" rx="10" fill="#1E293B"/>
     <rect x="8" y="8" width="24" height="24" rx="4" fill="#0F172A" stroke="#818CF8" stroke-width="1.5" stroke-opacity="0.6"/>
     <line x1="8" y1="8" x2="32" y2="32" stroke="#818CF8" stroke-width="1.5" stroke-linecap="round"/>
     <text x="25" y="17" fill="#38BDF8" font-size="9" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">16</text>
     <text x="15" y="28" fill="#F472B6" font-size="9" font-family="system-ui, sans-serif" font-weight="bold" text-anchor="middle">4</text>
   </svg>`,
-  nonogram: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  nonogram: `<svg aria-hidden="true" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="40" height="40" rx="10" fill="#1E293B"/>
     <rect x="9" y="9" width="6" height="6" rx="1.5" fill="#FB7185"/>
     <rect x="17" y="9" width="6" height="6" rx="1.5" fill="#FB7185"/>
@@ -70,14 +70,14 @@ const ICONS = {
     <line x1="26.5" y1="26.5" x2="29.5" y2="29.5" stroke="#94A3B8" stroke-width="1.2" stroke-linecap="round"/>
     <line x1="29.5" y1="26.5" x2="26.5" y2="29.5" stroke="#94A3B8" stroke-width="1.2" stroke-linecap="round"/>
   </svg>`,
-  dolce: `<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  dolce: `<svg aria-hidden="true" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="40" height="40" rx="10" fill="#1E293B"/>
     <path d="M12 13C12 11.3431 13.3431 10 15 10H25C26.6569 10 28 11.3431 28 13V27C28 28.6569 26.6569 30 25 30H15C13.3431 30 12 28.6569 12 27V13Z" stroke="#F59E0B" stroke-width="1.75"/>
     <circle cx="20" cy="20" r="5" stroke="#38BDF8" stroke-width="1.75"/>
     <circle cx="16" cy="15" r="1.5" fill="#EC4899"/>
     <circle cx="24" cy="25" r="1.5" fill="#10B981"/>
   </svg>`,
-  check: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`
+  check: `<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`
 };
 
 const TOOLS = [
@@ -315,7 +315,7 @@ const homeHtml = shell({
               <span>${t.status}</span>
             </span>
           </div>
-          <div class="tool-name">${t.name}</div>
+          <h3 class="tool-name">${t.name}</h3>
           <div class="tool-tag">${t.tag}</div>
           <p class="tool-desc">${t.desc}</p>
           <ul class="tool-features">
@@ -598,10 +598,10 @@ const dolceHtml = shell({
           <li>${ICONS.check} <span>100% Offline local neural inference</span></li>
           <li>${ICONS.check} <span>Single photo colorization & live grading</span></li>
           <li>${ICONS.check} <span>Local CPU or GPU inference (DirectML / MPS)</span></li>
-          <li class="disabled">&times; <span><strong>Web resolution cap (1080p / 2 MP max)</strong></span></li>
-          <li class="disabled">&times; <span><strong>Batches capped at 10 photos</strong></span></li>
-          <li class="disabled">&times; <span><strong>No Cinema Video Colorizer</strong></span></li>
-          <li class="disabled">&times; <span>No priority engineering support</span></li>
+          <li class="disabled"><span aria-hidden="true">&times;</span> <span><strong>Web resolution cap (1080p / 2 MP max)</strong></span></li>
+          <li class="disabled"><span aria-hidden="true">&times;</span> <span><strong>Batches capped at 10 photos</strong></span></li>
+          <li class="disabled"><span aria-hidden="true">&times;</span> <span><strong>No Cinema Video Colorizer</strong></span></li>
+          <li class="disabled"><span aria-hidden="true">&times;</span> <span>No priority engineering support</span></li>
         </ul>
         <div class="btn-stack">
           <a href="${COMMUNITY_WINDOWS_URL}" class="btn btn-secondary">
