@@ -10,7 +10,7 @@ Circuit Lab
 Carl Burch's classic Logisim digital logic simulator, reborn for the web. Build and simulate circuits with a 4-state engine, Karnaugh map analysis, and .circ file support. 100% free, private, no accounts, works offline.
 
 ## Full Description
-Logisim Revisited reborns Carl Burch's classic Logisim 2.7.1 digital logic simulator for the modern web — no Java required. Simulate circuits with a 4-state engine (0, 1, floating Z, and error E) across multi-bit buses up to 32 bits, using the classic component libraries: gates, plexers, arithmetic, memory, and I/O.
+Logisim Revisited is a modern rebirth of Carl Burch's classic Logisim 2.7.1 digital logic simulator for the modern web — no Java required. Simulate circuits with a 4-state engine (0, 1, floating Z, and error E) across multi-bit buses up to 32 bits, using the classic component libraries: gates, plexers, arithmetic, memory, and I/O.
 
 Open standard Logisim .circ files, or export your own. Verify logic with interactive 2–4 variable Karnaugh maps, Quine-McCluskey minimization, and one-click schematic synthesis from truth tables.
 

@@ -10,7 +10,7 @@ Pixel Logic
 Picross, reborn from the classic FreeNono line-logic engine. Solve, generate, and learn Nonogram puzzles with a deterministic human-step solver and a 4-stage Socratic Coach. 100% free, private, no accounts, works offline.
 
 ## Full Description
-Nonogram Revisited reborns the classic line-logic puzzle — known as Picross and Griddlers — inspired by the beloved open-source Java games FreeNono and NonogramSolver. It pairs a deterministic human-step solving engine with a fast, offline-capable web app.
+Nonogram Revisited is a modern rebirth of the classic line-logic puzzle — known as Picross and Griddlers — inspired by the beloved open-source Java games FreeNono and NonogramSolver. It pairs a deterministic human-step solving engine with a fast, offline-capable web app.
 
 Play daily date-seeded puzzles shared worldwide, or generate your own at any size and difficulty. The 4-stage Socratic Coach teaches line logic without spoiling the solve, and the "Why not fill / Why not cross out?" Contradiction Prover demonstrates every deduction — no guessing, ever.
 
