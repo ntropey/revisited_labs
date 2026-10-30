@@ -143,7 +143,8 @@ const TOOLS = [
       'Interactive Sum Combinations Cheat Sheet (sums 3 to 45)',
       'Unique sum partitions, cross-run intersections & bounds',
       'Sum-boundary contradiction proofs & forced placement',
-      'Date-seeded Daily Kakuro challenge'
+      'Date-seeded Daily Kakuro challenge',
+        'Available on the web & Microsoft Store'
     ],
   },
   {
