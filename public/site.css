@@ -374,9 +374,12 @@ footer.site-footer {
 
 @media (prefers-reduced-motion: reduce) {
   .card-tool,
-  .tool-cta-btn span {
+  .tool-cta-btn span,
+  .btn,
+  .status-dot {
     transition: none !important;
     transform: none !important;
+    animation: none !important;
   }
 }
 
@@ -436,7 +439,7 @@ footer.site-footer {
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 2rem;
   margin: 3rem 0 4rem;
 }
@@ -634,7 +637,7 @@ footer.site-footer {
 .showcase-title {
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--text-muted);
+  color: #94a3b8;
   font-family: monospace;
 }
 
@@ -681,3 +684,46 @@ footer.site-footer {
 .btn-stack { display: grid; gap: .6rem; width: 100%; }
 .btn-stack .btn { width: 100%; }
 .cta-note { font-size: .78rem; line-height: 1.5; color: var(--text-muted); margin-top: .6rem; }
+
+/* --- Mobile header: wrap nav links to prevent horizontal overflow --- */
+@media (max-width: 760px) {
+  header.site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem 1.25rem;
+  }
+  nav.main-nav {
+    flex-wrap: wrap;
+    gap: 0.5rem 1.1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* --- Phones: responsive container padding and fluid typography --- */
+@media (max-width: 600px) {
+  .container {
+    padding: 2rem 1.25rem;
+  }
+  .hero h1 {
+    font-size: 2.15rem;
+    line-height: 1.15;
+  }
+  .hero p.lead {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .btn-group {
+    margin: 1.25rem 0 1rem;
+  }
+  .grid-bento {
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+  }
+  .card-tool {
+    padding: 1.5rem;
+  }
+  .showcase-body {
+    padding: 1.25rem;
+  }
+}
