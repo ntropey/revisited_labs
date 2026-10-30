@@ -7,7 +7,7 @@ Nonogram Revisited Picross
 Free Picross solver & trainer. Solve, learn offline, no accounts, private.
 
 ## Full Description
-Nonogram Revisited reborns the classic picture logic puzzle — known as Picross and Griddlers — inspired by the beloved open-source Java games FreeNono and NonogramSolver. Solve pixel puzzles with a deterministic 9-technique human-step engine that never guesses.
+Nonogram Revisited is a modern rebirth of the classic picture logic puzzle — known as Picross and Griddlers — inspired by the beloved open-source Java games FreeNono and NonogramSolver. Solve pixel puzzles with a deterministic 9-technique human-step engine that never guesses.
 
 Learn line logic with the 4-stage Socratic AI Coach, which teaches every deduction in four progressive nudges: where to look, the pattern, the logic, and the conclusion. Ask "Why not fill?" or "Why not cross out?" on any cell and the Contradiction Prover demonstrates the exact logic that decides it.
 

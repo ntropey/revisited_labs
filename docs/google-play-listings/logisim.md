@@ -7,7 +7,7 @@ Logisim Revisited Circuit Lab
 Free logic circuit simulator & trainer. Offline, private, no accounts.
 
 ## Full Description
-Logisim Revisited reborns Carl Burch's classic Logisim 2.7.1 digital logic simulator for modern devices — no Java required. Build, simulate, and learn digital electronics with the complete classic component set, rebuilt and extended with modern tooling.
+Logisim Revisited is a modern rebirth of Carl Burch's classic Logisim 2.7.1 digital logic simulator for modern devices — no Java required. Build, simulate, and learn digital electronics with the complete classic component set, rebuilt and extended with modern tooling.
 
 Simulate circuits with a 4-state engine — 0, 1, floating Z, and error E — across multi-bit buses up to 32 bits. Drag and drop gates, plexers, arithmetic, memory, and I/O components: NOT, AND, OR, XOR, multiplexers, adders, flip-flops, registers, RAM, LEDs, and 7-segment displays.
 

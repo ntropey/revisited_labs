@@ -7,7 +7,7 @@ Kakuro Revisited Cross Sums
 Free Kakuro solver & trainer. Solve, learn offline, no accounts, private.
 
 ## Full Description
-Kakuro Revisited reborns the classic Cross Sums number puzzle, inspired by the open-source Java tools crozzsum, kakurohelper, and jkakuro. Generate puzzles with deterministic difficulty ratings, or solve with a human-style logical engine that reasons exactly like a skilled player.
+Kakuro Revisited is a modern rebirth of the classic Cross Sums number puzzle, inspired by the open-source Java tools crozzsum, kakurohelper, and jkakuro. Generate puzzles with deterministic difficulty ratings, or solve with a human-style logical engine that reasons exactly like a skilled player.
 
 Solve with human techniques in strict order: last cell in run, naked singles, magic blocks, cross-run intersections, sum bounds, and mandatory digits. The 4-stage Socratic AI Coach teaches each deduction without spoiling the answer, and the "Why not D?" Contradiction Prover pinpoints the exact run where a wrong digit must overflow or duplicate.
 
